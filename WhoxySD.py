@@ -16,15 +16,15 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 def printDomainInfo(domain):
 	w = whois.whois(domain)
 
-	regOrg = findall("Registrant\sOrganisation:\s(.*?)\r\n", w.text)
+	regOrg = findall("Registrant\sOrgani[sz]ation:\s(.*?)\r?\n", w.text)
 	if regOrg:
 		regOrg = regOrg[0]
 
-	regName = findall("Registrant\sName:\s(.*?)\r\n", w.text)
+	regName = findall("Registrant\sName:\s(.*?)\r?\n", w.text)
 	if regName:
 		regName = regName[0]
 
-	regEm = findall("Registrant\sEmail:\s(.*?)\r\n", w.text)
+	regEm = findall("Registrant\sEmail:\s(.*?)\r?\n", w.text)
 	if regEm:
 		regEm = regEm[0]
 
@@ -38,17 +38,17 @@ def getDomainQueryString(domain, choice):
 	w = whois.whois(domain)
 
 	if choice == "1":
-		regOrg = findall("Registrant\sOrganisation:\s(.*?)\r\n", w.text)
+		regOrg = findall("Registrant\sOrgani[sz]ation:\s(.*?)\r?\n", w.text)
 		if regOrg:
 			return regOrg[0]
 
 	if choice == "2":
-		regName = findall("Registrant\sName:\s(.*?)\r\n", w.text)
+		regName = findall("Registrant\sName:\s(.*?)\r?\n", w.text)
 		if regName:
 			return regName[0]
 
 	if choice == "3":
-		regEm = findall("Registrant\sEmail:\s(.*?)\r\n", w.text)
+		regEm = findall("Registrant\sEmail:\s(.*?)\r?\n", w.text)
 		if regEm:
 			return regEm[0]
 
