@@ -189,8 +189,7 @@ if __name__=="__main__":
 
 				pbar.update(1)
 
+	handleOutput(args.outputFile, finalResults)
 	if not args.quiet: 
 		print(f"Results from Whoxy: {len(whoxyResults)}")
 		print(f"Verified results: {len(finalResults)}")
-
-	handleOutput(args.outputFile, finalResults)
