@@ -93,13 +93,13 @@ def gatherFromWhoxy(baseUrl):
 
 
 def processDomain(domain, queryString, sleepTime):
-	if sleepTime > 0: 
+	if sleepTime > 0:
 		sleep(sleepTime)
 
 	try:
 		w = whois.whois(domain, quiet=True)
 
-		if queryString in w.text:
+		if queryString.lower() in w.text.lower():
 			return domain
 		else:
 			return None
